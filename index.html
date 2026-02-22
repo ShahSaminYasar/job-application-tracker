@@ -39,12 +39,12 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body class="font-geist bg-base-200 min-h-screen">
+  <body class="font-geist bg-base-200/80 min-h-screen">
     <!-- Header & Stats -->
     <header class="container py-7">
       <!-- Title -->
       <div class="flex flex-row items-center justify-between gap-3 mb-4">
-        <h1 class="text-2xl text-primary font-semibold">
+        <h1 class="text-xl sm:text-2xl text-primary font-semibold">
           Job Application Tracker
         </h1>
 
@@ -67,7 +67,7 @@
           </svg>
           <input
             type="checkbox"
-            value="night"
+            value="abyss"
             class="toggle theme-controller"
           />
           <svg
@@ -89,7 +89,7 @@
       <!-- Stats -->
       <div class="grid grid-cols-3 gap-3">
         <div class="bg-base-100 card">
-          <div class="card-body">
+          <div class="card-body items-center md:items-start">
             <span class="text-base-content text-sm font-normal">Total</span>
             <span id="stat-total" class="text-secondary text-xl font-bold"
               >0</span
@@ -98,7 +98,7 @@
         </div>
 
         <div class="bg-base-100 card">
-          <div class="card-body">
+          <div class="card-body items-center md:items-start">
             <span class="text-base-content text-sm font-normal">Interview</span>
             <span id="stat-interview" class="text-success text-xl font-bold"
               >0</span
@@ -107,7 +107,7 @@
         </div>
 
         <div class="bg-base-100 card">
-          <div class="card-body">
+          <div class="card-body items-center md:items-start">
             <span class="text-base-content text-sm font-normal">Rejected</span>
             <span id="stat-rejected" class="text-error text-xl font-bold"
               >0</span
@@ -122,8 +122,10 @@
     <!-- Main Content -->
     <main class="container py-5">
       <div class="flex flex-row justify-between items-center gap-3">
-        <h3 class="text-xl font-medium text-primary">Available Jobs</h3>
-        <span class="text-sm text-secondary"
+        <h3 class="text-lg md:text-xl font-medium text-primary">
+          Available Jobs
+        </h3>
+        <span class="text-xs md:text-sm text-secondary"
           ><span id="job-counter">Loading</span> jobs</span
         >
       </div>
@@ -131,23 +133,23 @@
       <!-- Tabs -->
       <div class="flex flex-row items-center gap-2 pb-2 pt-4">
         <button
-          onclick="setTab('all')"
           id="tab-btn-all"
-          class="tab-btn active text-sm"
+          class="tab-btn active text-xs md:text-sm"
+          data-status="all"
         >
           All
         </button>
         <button
-          onclick="setTab('interview')"
           id="tab-btn-interview"
-          class="tab-btn text-sm"
+          class="tab-btn text-xs md:text-sm"
+          data-status="interview"
         >
           Interview
         </button>
         <button
-          onclick="setTab('rejected')"
           id="tab-btn-rejected"
-          class="tab-btn text-sm"
+          class="tab-btn text-xs md:text-sm"
+          data-status="rejected"
         >
           Rejected
         </button>
