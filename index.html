@@ -75,14 +75,18 @@
     <main class="container py-5">
       <div class="flex flex-row justify-between items-center gap-3">
         <h3 class="text-xl font-medium text-primary">Available Jobs</h3>
-        <span class="text-sm text-base-content"
+        <span class="text-sm text-secondary"
           ><span id="job-counter">Loading</span> jobs</span
         >
       </div>
 
       <!-- Tabs -->
       <div class="flex flex-row items-center gap-2 pb-2 pt-4">
-        <button onclick="setTab('all')" id="tab-btn-all" class="tab-btn active text-sm">
+        <button
+          onclick="setTab('all')"
+          id="tab-btn-all"
+          class="tab-btn active text-sm"
+        >
           All
         </button>
         <button

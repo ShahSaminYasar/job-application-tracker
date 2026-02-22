@@ -26,7 +26,7 @@ const jobs = [
     company: "FinEdge Solutions",
     title: "Backend Developer (Node.js)",
     location: "San Francisco, CA",
-    type: "Full-time",
+    type: "Part-time",
     salary: "$140,000 - $165,000",
     status: "interview",
     description:
@@ -59,7 +59,7 @@ const jobs = [
     company: "NextGen AI",
     title: "Machine Learning Engineer",
     location: "Boston, MA",
-    type: "Full-time",
+    type: "Part-time",
     salary: "$150,000 - $185,000",
     status: "not applied",
     description:
@@ -83,7 +83,7 @@ const jobs = [
     location: "Chicago, IL",
     type: "Full-time",
     salary: "$110,000 - $135,000",
-    status: "Not Applied",
+    status: "rejected",
     description:
       "Lead cross-functional teams to define, build, and launch impactful education technology products.",
   },
@@ -124,9 +124,9 @@ function renderJobs(type = null) {
   for (const job of filteredJobs) {
     const jobDiv = document.createElement("div");
 
-    jobDiv.classList = "card bg-base-100";
+    jobDiv.classList = "card bg-base-100 fade";
     jobDiv.innerHTML = `
-        <div class="card-body">
+        <div class="card-body border-l-3 ${job?.status === "interview" ? "border-success/30" : job?.status === "rejected" ? "border-error/30" : "border-secondary/30"}">
             <h4 class="card-title text-lg">${job?.company}</h4>
             <p class="text-lg font-light -mt-2 text-secondary">
               ${job?.title}
@@ -139,7 +139,7 @@ function renderJobs(type = null) {
               <span>${job?.salary}</span>
             </p>
 
-            <span class="badge badge-outline ${job?.status === "interview" ? "badge-success" : job?.status === "rejected" ? "badge-error" : "badge-warning"} mt-1 mb-1.5 capitalize"
+            <span class="badge badge-soft ${job?.status === "interview" ? "badge-success" : job?.status === "rejected" ? "badge-error" : "badge-warning"} mt-1 mb-1.5 capitalize"
               >${job?.status}</span
             >
 
@@ -148,11 +148,11 @@ function renderJobs(type = null) {
             </p>
 
             <div class="flex gap-2 items-center mt-2">
-              <button class="btn btn-outline btn-success btn-sm">
+              <button onclick='changeStatus(${job?.id}, "interview")' class="btn btn-outline btn-success btn-sm">
                 Interview
               </button>
 
-              <button class="btn btn-outline btn-error btn-sm">Rejected</button>
+              <button onclick='changeStatus(${job?.id}, "rejected")' class="btn btn-outline btn-error btn-sm">Rejected</button>
             </div>
         </div>
     `;
@@ -185,4 +185,18 @@ function setTab(tab) {
     default:
       break;
   }
+}
+
+function changeStatus(id, status) {
+  const target = jobs.find((job) => job?.id === id);
+  if (!target) {
+    return alert("Invalid job");
+  }
+
+  target.status = status;
+
+  const currentTab = document.querySelector(".tab-btn.active");
+  const currentTabText = currentTab?.textContent?.trim()?.toLowerCase();
+
+  renderJobs(currentTabText === "all" ? null : currentTabText);
 }

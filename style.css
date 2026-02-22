@@ -19,7 +19,7 @@
 }
 
 .tab-btn {
-  padding: 6px 12px;
+  padding: 4px 16px;
   background: transparent;
   border: 2px solid var(--color-secondary);
   color: var(--color-secondary);
@@ -33,4 +33,19 @@
   border: 2px solid var(--color-primary);
   background: var(--color-primary);
   color: var(--color-primary-content);
+}
+
+.fade {
+  animation: fadeAnimation 0.3s linear;
+}
+
+@keyframes fadeAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
