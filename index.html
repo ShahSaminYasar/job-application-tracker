@@ -29,5 +29,39 @@
       type="text/css"
     />
   </head>
-  <body class="font-geist bg-base-200 min-h-screen"></body>
+  <body class="font-geist bg-base-200 min-h-screen">
+    <!-- Header & Stats -->
+    <header class="container py-7">
+      <!-- Title -->
+      <h1 class="text-2xl text-primary font-semibold mb-4">
+        Job Application Tracker
+      </h1>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-3">
+        <div
+          class="w-full bg-base-100 flex flex-col items-start gap-1 p-5 rounded-xl border border-base-300"
+        >
+          <span class="text-base-content text-sm font-normal">Total</span>
+          <span id="total" class="text-secondary text-lg font-bold">0</span>
+        </div>
+
+        <div
+          class="w-full bg-base-100 flex flex-col items-start gap-1 p-5 rounded-xl border border-base-300"
+        >
+          <span class="text-base-content text-sm font-normal">Interview</span>
+          <span id="total" class="text-success text-lg font-bold">0</span>
+        </div>
+
+        <div
+          class="w-full bg-base-100 flex flex-col items-start gap-1 p-5 rounded-xl border border-base-300"
+        >
+          <span class="text-base-content text-sm font-normal">Rejected</span>
+          <span id="total" class="text-error text-lg font-bold">0</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="divider container"></div>
+  </body>
 </html>
