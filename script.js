@@ -121,16 +121,16 @@ function renderJobs(type = null) {
     : filteredJobs?.length;
   jobsContainer.innerHTML = "";
 
-  for (const job of filteredJobs) {
-    const jobDiv = document.createElement("div");
-
-    jobDiv.classList = "card bg-base-100 fade";
-    jobDiv.innerHTML = `
+  if (filteredJobs?.length > 0) {
+    for (const job of filteredJobs) {
+      const jobDiv = document.createElement("div");
+      jobDiv.classList = "card bg-base-100 fade";
+      jobDiv.innerHTML = `
         <div class="card-body border-l-3 ${job?.status === "interview" ? "border-success/30" : job?.status === "rejected" ? "border-error/30" : "border-secondary/30"}">
             <div class="flex items-center justify-between gap-3">
                 <h4 class="card-title text-lg">${job?.company}</h4>
 
-                <button onclick="deleteJob(${job?.id})" class="text-lg text-error cursor-pointer"><i class="fa-regular fa-trash-can"></i></button>
+                <button onclick="deleteJob(${job?.id})" class="btn btn-circle btn-outline btn-error"><i class="fa-regular fa-trash-can"></i></button>
             </div>
 
             <p class="text-lg font-light -mt-2 text-secondary">
@@ -161,8 +161,24 @@ function renderJobs(type = null) {
             </div>
         </div>
     `;
-
-    jobsContainer.appendChild(jobDiv);
+      jobsContainer.appendChild(jobDiv);
+    }
+  } else {
+    const emptyDiv = document.createElement("div");
+    emptyDiv.classList = "card bg-base-100";
+    emptyDiv.innerHTML = `
+    <div class="card-body items-center gap-1 py-25">
+        <img
+        src="./job-icon.png"
+        alt="File Icon"
+        class="w-full max-w-[60px] mb-3"
+        />
+        <h6 class="card-title text-lg">No Jobs Available</h6>
+        <p class="text-sm font-normal text-secondary">
+        Check back soon for new job opportunities
+        </p>
+    </div>`;
+    jobsContainer.appendChild(emptyDiv);
   }
 }
 
