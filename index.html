@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Application Tracker | B13 A04 by Shah Samin Yasar</title>
+    <link rel="shortcut icon" href="job-icon.png" type="image/x-icon" />
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css" />
@@ -42,7 +43,7 @@
         <div class="bg-base-100 card">
           <div class="card-body">
             <span class="text-base-content text-sm font-normal">Total</span>
-            <span id="stat-total" class="text-secondary text-lg font-bold"
+            <span id="stat-total" class="text-secondary text-xl font-bold"
               >0</span
             >
           </div>
@@ -51,7 +52,7 @@
         <div class="bg-base-100 card">
           <div class="card-body">
             <span class="text-base-content text-sm font-normal">Interview</span>
-            <span id="stat-interview" class="text-success text-lg font-bold"
+            <span id="stat-interview" class="text-success text-xl font-bold"
               >0</span
             >
           </div>
@@ -60,7 +61,7 @@
         <div class="bg-base-100 card">
           <div class="card-body">
             <span class="text-base-content text-sm font-normal">Rejected</span>
-            <span id="stat-rejected" class="text-error text-lg font-bold"
+            <span id="stat-rejected" class="text-error text-xl font-bold"
               >0</span
             >
           </div>
@@ -75,7 +76,7 @@
       <div class="flex flex-row justify-between items-center gap-3">
         <h3 class="text-xl font-medium text-primary">Available Jobs</h3>
         <span class="text-sm text-base-content"
-          ><span id="job-counter">8</span> jobs</span
+          ><span id="job-counter">Loading</span> jobs</span
         >
       </div>
 
@@ -87,41 +88,10 @@
       </div>
 
       <!-- Job Cards -->
-      <div id="jobs-container" class="flex flex-col gap-3 py-3">
-        <!-- Job Card -->
-        <div class="card bg-base-100">
-          <div class="card-body">
-            <h4 class="card-title text-lg">Mobile First Corp.</h4>
-            <p class="text-lg font-light -mt-3 text-secondary">
-              React Native Developer
-            </p>
-
-            <p
-              class="flex flex-row items-center flex-wrap gap-3 text-sm font-light text-secondary"
-            >
-              <span>Remote</span> • <span>Full-time</span> •
-              <span>$130,000 - $175,000</span>
-            </p>
-
-            <span class="badge badge-soft badge-secondary mt-1 mb-1.5"
-              >Not Applied</span
-            >
-
-            <p class="text-sm font-normal text-secondary">
-              Build cross-platform mobile applications using React Native. Work
-              on products used by millions of users worldwide.
-            </p>
-
-            <div>
-              <button class="btn btn-outline btn-success btn-sm">
-                Interview
-              </button>
-
-              <button class="btn btn-outline btn-error btn-sm">Rejected</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="jobs-container" class="flex flex-col gap-3 py-3"></div>
     </main>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
   </body>
 </html>
