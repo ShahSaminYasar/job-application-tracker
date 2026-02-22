@@ -124,16 +124,16 @@ function renderJobs(type = null) {
   if (filteredJobs?.length > 0) {
     for (const job of filteredJobs) {
       const jobDiv = document.createElement("div");
-      jobDiv.classList = "card bg-base-100 fade";
+      jobDiv.classList = "card bg-base-100 fade overflow-hidden";
       jobDiv.innerHTML = `
-        <div class="card-body border-l-3 ${job?.status === "interview" ? "border-success/30" : job?.status === "rejected" ? "border-error/30" : "border-secondary/30"}">
+        <div class="card-body border-l-3 ${job?.status === "interview" ? "border-success/40" : job?.status === "rejected" ? "border-error/40" : "border-secondary/40"}">
             <div class="flex items-center justify-between gap-3">
                 <h4 class="card-title text-lg">${job?.company}</h4>
 
                 <button onclick="deleteJob(${job?.id})" class="btn btn-circle btn-outline btn-error"><i class="fa-regular fa-trash-can"></i></button>
             </div>
 
-            <p class="text-lg font-light -mt-2 text-secondary">
+            <p class="text-lg font-light -mt-4 text-secondary">
               ${job?.title}
             </p>
 
@@ -226,7 +226,7 @@ function changeStatus(id, status) {
     )
   ) {
     target.status = status;
-    alert("Job status was updated successfully");
+    // alert("Job status was updated successfully");
     const currentTab = getCurrentTab();
     renderJobs(currentTab === "all" ? null : currentTab);
   }
