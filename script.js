@@ -127,7 +127,12 @@ function renderJobs(type = null) {
     jobDiv.classList = "card bg-base-100 fade";
     jobDiv.innerHTML = `
         <div class="card-body border-l-3 ${job?.status === "interview" ? "border-success/30" : job?.status === "rejected" ? "border-error/30" : "border-secondary/30"}">
-            <h4 class="card-title text-lg">${job?.company}</h4>
+            <div class="flex items-center justify-between gap-3">
+                <h4 class="card-title text-lg">${job?.company}</h4>
+
+                <button onclick="deleteJob(${job?.id})" class="text-lg text-error cursor-pointer"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+
             <p class="text-lg font-light -mt-2 text-secondary">
               ${job?.title}
             </p>
@@ -187,16 +192,45 @@ function setTab(tab) {
   }
 }
 
+function getCurrentTab() {
+  const currentTab = document.querySelector(".tab-btn.active");
+  const currentTabText = currentTab?.textContent?.trim()?.toLowerCase();
+  return currentTabText;
+}
+
 function changeStatus(id, status) {
   const target = jobs.find((job) => job?.id === id);
   if (!target) {
     return alert("Invalid job");
   }
 
-  target.status = status;
+  if (
+    confirm(
+      `Are you sure to change the status of the job "${target?.company}-${target?.title}" to ${status}?`,
+    )
+  ) {
+    target.status = status;
+    alert("Job status was updated successfully");
+    const currentTab = getCurrentTab();
+    renderJobs(currentTab === "all" ? null : currentTab);
+  }
+}
 
-  const currentTab = document.querySelector(".tab-btn.active");
-  const currentTabText = currentTab?.textContent?.trim()?.toLowerCase();
+function deleteJob(id) {
+  const target = jobs.find((job) => job?.id === id);
 
-  renderJobs(currentTabText === "all" ? null : currentTabText);
+  if (!target || !id) {
+    return alert("Invalid ID");
+  }
+
+  if (
+    confirm(
+      `Are your sure you want to delete the job "${target?.company} - ${target?.title}"? This action CANNOT be undone!`,
+    )
+  ) {
+    const targetIndex = jobs.indexOf(target);
+    jobs.splice(targetIndex, 1);
+    const currentTab = getCurrentTab();
+    renderJobs(currentTab === "all" ? null : currentTab);
+  }
 }
