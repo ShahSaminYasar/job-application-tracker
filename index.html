@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="winter">
+<html lang="en" data-theme="corporate">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,29 +39,89 @@
 
       <!-- Stats -->
       <div class="grid grid-cols-3 gap-3">
-        <div
-          class="w-full bg-base-100 flex flex-col items-start gap-1 p-5 rounded-xl border border-base-300"
-        >
-          <span class="text-base-content text-sm font-normal">Total</span>
-          <span id="total" class="text-secondary text-lg font-bold">0</span>
+        <div class="bg-base-100 card">
+          <div class="card-body">
+            <span class="text-base-content text-sm font-normal">Total</span>
+            <span id="stat-total" class="text-secondary text-lg font-bold"
+              >0</span
+            >
+          </div>
         </div>
 
-        <div
-          class="w-full bg-base-100 flex flex-col items-start gap-1 p-5 rounded-xl border border-base-300"
-        >
-          <span class="text-base-content text-sm font-normal">Interview</span>
-          <span id="total" class="text-success text-lg font-bold">0</span>
+        <div class="bg-base-100 card">
+          <div class="card-body">
+            <span class="text-base-content text-sm font-normal">Interview</span>
+            <span id="stat-interview" class="text-success text-lg font-bold"
+              >0</span
+            >
+          </div>
         </div>
 
-        <div
-          class="w-full bg-base-100 flex flex-col items-start gap-1 p-5 rounded-xl border border-base-300"
-        >
-          <span class="text-base-content text-sm font-normal">Rejected</span>
-          <span id="total" class="text-error text-lg font-bold">0</span>
+        <div class="bg-base-100 card">
+          <div class="card-body">
+            <span class="text-base-content text-sm font-normal">Rejected</span>
+            <span id="stat-rejected" class="text-error text-lg font-bold"
+              >0</span
+            >
+          </div>
         </div>
       </div>
     </header>
 
     <div class="divider container"></div>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+      <div class="flex flex-row justify-between items-center gap-3">
+        <h3 class="text-xl font-medium text-primary">Available Jobs</h3>
+        <span class="text-sm text-base-content"
+          ><span id="job-counter">8</span> jobs</span
+        >
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex flex-row items-center gap-2 pb-2 pt-4">
+        <button class="btn btn-sm btn-primary min-w-[75px]">All</button>
+        <button class="btn btn-sm btn-outline min-w-[75px]">Interview</button>
+        <button class="btn btn-sm btn-outline min-w-[75px]">Rejected</button>
+      </div>
+
+      <!-- Job Cards -->
+      <div id="jobs-container" class="flex flex-col gap-3 py-3">
+        <!-- Job Card -->
+        <div class="card bg-base-100">
+          <div class="card-body">
+            <h4 class="card-title text-lg">Mobile First Corp.</h4>
+            <p class="text-lg font-light -mt-3 text-secondary">
+              React Native Developer
+            </p>
+
+            <p
+              class="flex flex-row items-center flex-wrap gap-3 text-sm font-light text-secondary"
+            >
+              <span>Remote</span> • <span>Full-time</span> •
+              <span>$130,000 - $175,000</span>
+            </p>
+
+            <span class="badge badge-soft badge-secondary mt-1 mb-1.5"
+              >Not Applied</span
+            >
+
+            <p class="text-sm font-normal text-secondary">
+              Build cross-platform mobile applications using React Native. Work
+              on products used by millions of users worldwide.
+            </p>
+
+            <div>
+              <button class="btn btn-outline btn-success btn-sm">
+                Interview
+              </button>
+
+              <button class="btn btn-outline btn-error btn-sm">Rejected</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
