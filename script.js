@@ -89,17 +89,22 @@ const jobs = [
   },
 ];
 
+const jobsContainer = document.getElementById("jobs-container");
+const jobCounter = document.getElementById("job-counter");
+const totalStat = document.getElementById("stat-total");
+const interviewStat = document.getElementById("stat-interview");
+const rejectedStat = document.getElementById("stat-rejected");
+const tabButtons = document.querySelectorAll(".tab-btn");
+const tabBtnAll = document.getElementById("tab-btn-all");
+const tabBtnInterview = document.getElementById("tab-btn-interview");
+const tabBtnRejected = document.getElementById("tab-btn-rejected");
+
 document.addEventListener("DOMContentLoaded", () => {
-  renderJobs("interview");
+  renderJobs();
 });
 
 function renderJobs(type = null) {
-  const jobsContainer = document.getElementById("jobs-container");
-  const jobCounter = document.getElementById("job-counter");
-  const totalStat = document.getElementById("stat-total");
-  const interviewStat = document.getElementById("stat-interview");
-  const rejectedStat = document.getElementById("stat-rejected");
-
+  // Update Stat Counters
   totalStat.innerText = jobs?.length;
   interviewStat.innerHTML = jobs?.filter(
     (job) => job?.status === "interview",
@@ -108,6 +113,7 @@ function renderJobs(type = null) {
     (job) => job?.status === "rejected",
   )?.length;
 
+  //   Render Job Cards
   const filteredJobs = type ? jobs.filter((job) => job.status === type) : jobs;
 
   jobCounter.innerText = type
@@ -117,8 +123,8 @@ function renderJobs(type = null) {
 
   for (const job of filteredJobs) {
     const jobDiv = document.createElement("div");
-    jobDiv.classList = "card bg-base-100";
 
+    jobDiv.classList = "card bg-base-100";
     jobDiv.innerHTML = `
         <div class="card-body">
             <h4 class="card-title text-lg">${job?.company}</h4>
@@ -152,5 +158,31 @@ function renderJobs(type = null) {
     `;
 
     jobsContainer.appendChild(jobDiv);
+  }
+}
+
+function setTab(tab) {
+  tabButtons.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+
+  switch (tab) {
+    case "all":
+      tabBtnAll.classList.add("active");
+      renderJobs();
+      break;
+
+    case "interview":
+      tabBtnInterview.classList.add("active");
+      renderJobs("interview");
+      break;
+
+    case "rejected":
+      tabBtnRejected.classList.add("active");
+      renderJobs("rejected");
+      break;
+
+    default:
+      break;
   }
 }

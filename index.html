@@ -82,9 +82,23 @@
 
       <!-- Tabs -->
       <div class="flex flex-row items-center gap-2 pb-2 pt-4">
-        <button class="btn btn-sm btn-primary min-w-[75px]">All</button>
-        <button class="btn btn-sm btn-outline min-w-[75px]">Interview</button>
-        <button class="btn btn-sm btn-outline min-w-[75px]">Rejected</button>
+        <button onclick="setTab('all')" id="tab-btn-all" class="tab-btn active text-sm">
+          All
+        </button>
+        <button
+          onclick="setTab('interview')"
+          id="tab-btn-interview"
+          class="tab-btn text-sm"
+        >
+          Interview
+        </button>
+        <button
+          onclick="setTab('rejected')"
+          id="tab-btn-rejected"
+          class="tab-btn text-sm"
+        >
+          Rejected
+        </button>
       </div>
 
       <!-- Job Cards -->
