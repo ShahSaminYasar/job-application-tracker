@@ -14,14 +14,23 @@
 ### 2. How do you create and insert a new element into the DOM?
 
 **Step 1: Create the element**
+
+```javascript
 const demoElement = document.createElement("p");
+```
 
 **Step 2: Furnish the element with classes, id, and inner data**
+
+```javascript
 demoElement.classList.add("text-sm", "text-blue-600");
 demoElement.textContent = "Hello World!";
+```
 
 **Step 3: Insert (append) the element into the DOM**
+
+```javascript
 document.body.appendChild(demoElement);
+```
 
 ---
 
